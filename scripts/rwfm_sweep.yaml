@@ -1,0 +1,31 @@
+program: src/train.py
+name: rwfm_sweep
+method: grid
+metric:
+  goal: maximize
+  name: model_eval_val/reward 
+parameters:
+  rwfm_alpha:
+    values: [0.0, 5.0, 10.0, 20.0, 40.0]
+  collect_explore_amplitude:
+    values: [0.0, 0.05, 0.1, 0.2]
+  rwfm_v_function:
+    values: [False]
+  reward_model_params:
+    values: [
+      '{"final_position_weight": 1.0, "final_velocity_weight": 0.0, "total_time_weight": 0.0, "pointing_north_weight": 0.0, "wall_contact_weight": 0.0, "control_magnitude_weight": 0.0}',
+      '{"final_position_weight": 1.0, "final_velocity_weight": 1.0, "total_time_weight": 0.0, "pointing_north_weight": 0.0, "wall_contact_weight": 0.0, "control_magnitude_weight": 0.0}',
+      '{"final_position_weight": 1.0, "final_velocity_weight": 0.0, "total_time_weight": 0.1, "pointing_north_weight": 0.0, "wall_contact_weight": 0.0, "control_magnitude_weight": 0.0}',
+      '{"final_position_weight": 1.0, "final_velocity_weight": 0.0, "total_time_weight": 0.0, "pointing_north_weight": 0.5, "wall_contact_weight": 0.0, "control_magnitude_weight": 0.0}',
+      '{"final_position_weight": 1.0, "final_velocity_weight": 0.0, "total_time_weight": 0.0, "pointing_north_weight": 0.0, "wall_contact_weight": 1.0, "control_magnitude_weight": 0.0}',
+      '{"final_position_weight": 1.0, "final_velocity_weight": 0.0, "total_time_weight": 0.0, "pointing_north_weight": 0.0, "wall_contact_weight": 0.0, "control_magnitude_weight": 0.5}',
+    ]
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - --output_dir=./output/ra${rwfm_alpha}_cea${collect_explore_amplitude}_rvf${rwfm_v_function}_reward${reward_model_params}
+  - --env=unicycle
+  - --model_architecture=unicycle
+  - --wandb_version=rwfm_sweep
+  - ${args}

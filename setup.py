@@ -1,0 +1,31 @@
+from setuptools import setup, find_packages
+
+setup(
+    name='flowmatchingrl',
+    version='0.1.0',
+    description='Flow Matching with Reinforcement Learning',
+    author='',
+    author_email='',
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
+    python_requires='>=3.12',
+    install_requires=[
+        'torch',
+        'torchvision',
+        'wandb',
+        'einops',
+        'jaxtyping',
+        'click',
+        'numpy',
+        'torchdiffeq',
+        'matplotlib',
+        'tqdm',
+        'tensordict',
+        'pdbpp',
+        'datasets',
+        'accelerate',
+        'typed-argument-parser',
+        'torchmetrics[image]',
+        'PyQt6',
+    ],
+) 
