@@ -51,7 +51,6 @@ def eval_model(
             states=states,
             observations=observations,
             actions=synthetic_actions,
-            breakpoint=True,
         )
         
         epoch_rewards.update(synthetic_rewards.rewards)

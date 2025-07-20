@@ -744,8 +744,8 @@ def velocity_optimize_plots(
     
 
 @click.command()
-@click.argument('rwfm_sweep_id', type=str, default='xxmcgk0i')
-@click.argument('grpo_sweep_id', type=str, default='l419g32k')
+@click.argument('rwfm_sweep_id', type=str)
+@click.argument('grpo_sweep_id', type=str)
 @click.option('--cache', type=bool, default=False)
 def main(rwfm_sweep_id: str, grpo_sweep_id: str, cache: bool) -> None:
     if not os.path.exists('output_plotting'):
