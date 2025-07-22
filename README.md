@@ -1,4 +1,4 @@
-This codebase accompanies our preprint: Reinforcement Learning for Flow-Matching Policies.
+This codebase accompanies our preprint: [Reinforcement Learning for Flow-Matching Policies](https://arxiv.org/abs/2507.15073).
 
 ## Installation
 This codebase requires python 3.12. Install it via [pyenv](https://github.com/pyenv/pyenv) if not already present and then run:
